@@ -25,4 +25,18 @@ public class UserController {
     public void addUser(@RequestBody UserModel userModel){
         userService.addUser(userModel);
     }
+
+    @DeleteMapping("deleteUser/{userId}")
+    public void deleteUser(@PathVariable("userId") Long userId) {
+        userService.deleteUser(userId);
+    }
+
+    @PutMapping("updateUser/{userId}")
+    public void updateUser(
+            @PathVariable("userId") Long userId,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String email){
+        userService.updateUser(userId, name, email);
+    }
+
 }
