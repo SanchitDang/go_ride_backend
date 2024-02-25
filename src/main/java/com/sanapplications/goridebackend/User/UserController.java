@@ -1,9 +1,7 @@
 package com.sanapplications.goridebackend.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,8 +17,12 @@ public class UserController {
     }
 
     @GetMapping("getUsers")
-    public List<User> getUsers(){
+    public List<UserModel> getUsers(){
         return userService.getUsers();
     }
 
+    @PostMapping("addUser")
+    public void addUser(@RequestBody UserModel userModel){
+        userService.addUser(userModel);
+    }
 }

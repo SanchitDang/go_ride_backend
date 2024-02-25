@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class UserModel {
     @Id
     @SequenceGenerator(
             name= "user_sequence",
@@ -22,10 +22,12 @@ public class User {
     private String firstName;
     private String lastName;
 
-    public User() {
+    // use @Transient if we want any value that we do not want to put inside as a column
+
+    public UserModel() {
     }
 
-    public User(Long id, String email, String password, String phone, String firstName, String lastName) {
+    public UserModel(Long id, String email, String password, String phone, String firstName, String lastName) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -34,7 +36,7 @@ public class User {
         this.lastName = lastName;
     }
 
-    public User(String email, String password, String phone, String firstName, String lastName) {
+    public UserModel(String email, String password, String phone, String firstName, String lastName) {
         this.email = email;
         this.password = password;
         this.phone = phone;
