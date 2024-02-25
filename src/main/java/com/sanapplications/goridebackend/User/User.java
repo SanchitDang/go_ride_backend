@@ -1,6 +1,20 @@
 package com.sanapplications.goridebackend.User;
 
-public class UserModel {
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "users")
+public class User {
+    @Id
+    @SequenceGenerator(
+            name= "user_sequence",
+            sequenceName = "user_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "user_sequence"
+    )
     private Long id;
     private String email;
     private String password;
@@ -8,10 +22,10 @@ public class UserModel {
     private String firstName;
     private String lastName;
 
-    public UserModel() {
+    public User() {
     }
 
-    public UserModel(Long id, String email, String password, String phone, String firstName, String lastName) {
+    public User(Long id, String email, String password, String phone, String firstName, String lastName) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -20,7 +34,7 @@ public class UserModel {
         this.lastName = lastName;
     }
 
-    public UserModel(String email, String password, String phone, String firstName, String lastName) {
+    public User(String email, String password, String phone, String firstName, String lastName) {
         this.email = email;
         this.password = password;
         this.phone = phone;
