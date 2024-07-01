@@ -1,7 +1,7 @@
 package com.sanapplications.goridebackend.controller;
 
 import com.sanapplications.goridebackend.service.SettingsService;
-import model.SettingsModel;
+import com.sanapplications.goridebackend.model.SettingsModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

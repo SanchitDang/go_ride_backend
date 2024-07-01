@@ -1,4 +1,4 @@
-package model;
+package com.sanapplications.goridebackend.model;
 
 import jakarta.persistence.*;
 

@@ -1,7 +1,7 @@
 package com.sanapplications.goridebackend.service;
 
 import com.sanapplications.goridebackend.repository.SettingsRepository;
-import model.SettingsModel;
+import com.sanapplications.goridebackend.model.SettingsModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
