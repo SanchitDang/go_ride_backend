@@ -1,5 +1,7 @@
-package com.sanapplications.goridebackend.User;
+package com.sanapplications.goridebackend.controller;
 
+import com.sanapplications.goridebackend.service.UserService;
+import com.sanapplications.goridebackend.model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,8 +24,8 @@ public class UserController {
     }
 
     @PostMapping("addUser")
-    public void addUser(@RequestBody UserModel userModel){
-        userService.addUser(userModel);
+    public UserModel addUser(@RequestBody UserModel userModel){
+         return userService.addUser(userModel);
     }
 
     @DeleteMapping("deleteUser/{userId}")
@@ -39,4 +41,17 @@ public class UserController {
         userService.updateUser(userId, name, email);
     }
 
+    @PostMapping("login")
+    public boolean login(@RequestParam String email, @RequestParam String password) {
+        return userService.login(email, password);
+    }
+
+    @PostMapping("register")
+    public UserModel register(@RequestParam String email,
+                              @RequestParam String password,
+                              @RequestParam String phone,
+                              @RequestParam String firstName,
+                              @RequestParam String lastName) {
+        return userService.register(email, password, phone, firstName, lastName);
+    }
 }

@@ -24,10 +24,10 @@ public class AvailableRides {
     private String token;
     private String otp;
     private String driverStatus;
-    @Embedded
-    private LocationModel startLocation;
-    @Embedded
-    private LocationModel dropLocation;
+//    @Embedded
+//    private LocationModel startLocation;
+//    @Embedded
+//    private LocationModel dropLocation;
     private int pkgUsed;
     private String ride;
     private String route;
@@ -35,7 +35,9 @@ public class AvailableRides {
     public AvailableRides() {
     }
 
-    public AvailableRides(long id, long userId, long driverId, String date, String time, String token, String otp, String driverStatus, LocationModel startLocation, LocationModel dropLocation, int pkgUsed, String ride, String route) {
+    public AvailableRides(long id, long userId, long driverId, String date, String time, String token, String otp, String driverStatus,
+//                          LocationModel startLocation, LocationModel dropLocation,
+                          int pkgUsed, String ride, String route) {
         this.id = id;
         this.userId = userId;
         this.driverId = driverId;
@@ -44,14 +46,16 @@ public class AvailableRides {
         this.token = token;
         this.otp = otp;
         this.driverStatus = driverStatus;
-        this.startLocation = startLocation;
-        this.dropLocation = dropLocation;
+//        this.startLocation = startLocation;
+//        this.dropLocation = dropLocation;
         this.pkgUsed = pkgUsed;
         this.ride = ride;
         this.route = route;
     }
 
-    public AvailableRides(long userId, long driverId, String date, String time, String token, String otp, String driverStatus, LocationModel startLocation, LocationModel dropLocation, int pkgUsed, String ride, String route) {
+    public AvailableRides(long userId, long driverId, String date, String time, String token, String otp, String driverStatus,
+//                          LocationModel startLocation, LocationModel dropLocation,
+                          int pkgUsed, String ride, String route) {
         this.userId = userId;
         this.driverId = driverId;
         this.date = date;
@@ -59,8 +63,8 @@ public class AvailableRides {
         this.token = token;
         this.otp = otp;
         this.driverStatus = driverStatus;
-        this.startLocation = startLocation;
-        this.dropLocation = dropLocation;
+//        this.startLocation = startLocation;
+//        this.dropLocation = dropLocation;
         this.pkgUsed = pkgUsed;
         this.ride = ride;
         this.route = route;
@@ -130,21 +134,21 @@ public class AvailableRides {
         this.driverStatus = driverStatus;
     }
 
-    public LocationModel getStartLocation() {
-        return startLocation;
-    }
-
-    public void setStartLocation(LocationModel startLocation) {
-        this.startLocation = startLocation;
-    }
-
-    public LocationModel getDropLocation() {
-        return dropLocation;
-    }
-
-    public void setDropLocation(LocationModel dropLocation) {
-        this.dropLocation = dropLocation;
-    }
+//    public LocationModel getStartLocation() {
+//        return startLocation;
+//    }
+//
+//    public void setStartLocation(LocationModel startLocation) {
+//        this.startLocation = startLocation;
+//    }
+//
+//    public LocationModel getDropLocation() {
+//        return dropLocation;
+//    }
+//
+//    public void setDropLocation(LocationModel dropLocation) {
+//        this.dropLocation = dropLocation;
+//    }
 
     public int getPkgUsed() {
         return pkgUsed;
@@ -181,8 +185,8 @@ public class AvailableRides {
                 ", token='" + token + '\'' +
                 ", otp='" + otp + '\'' +
                 ", driverStatus='" + driverStatus + '\'' +
-                ", startLocation=" + startLocation +
-                ", dropLocation=" + dropLocation +
+//                ", startLocation=" + startLocation +
+//                ", dropLocation=" + dropLocation +
                 ", pkgUsed=" + pkgUsed +
                 ", ride='" + ride + '\'' +
                 ", route='" + route + '\'' +

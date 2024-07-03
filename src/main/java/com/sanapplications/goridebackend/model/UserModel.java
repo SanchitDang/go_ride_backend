@@ -1,4 +1,4 @@
-package com.sanapplications.goridebackend.User;
+package com.sanapplications.goridebackend.model;
 
 import jakarta.persistence.*;
 

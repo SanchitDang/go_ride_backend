@@ -1,7 +1,7 @@
-package com.sanapplications.goridebackend.User;
+package com.sanapplications.goridebackend.repository;
 
+import com.sanapplications.goridebackend.model.UserModel;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
