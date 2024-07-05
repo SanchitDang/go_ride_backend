@@ -16,11 +16,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/api/v1/user/getUsers",
-                                "/api/v1/user/addUser",
-                                "/api/v1/user/deleteUser/**",
-                                "/api/v1/user/login",
-                                "/api/v1/user/register").permitAll()
+                        .requestMatchers("/api/v1/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults());
