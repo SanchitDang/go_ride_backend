@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "rides_history")
-public class RidesHistory {
+public class RidesHistoryModel {
     @Id
     @SequenceGenerator(
             name= "rides_history_sequence",
@@ -25,10 +25,10 @@ public class RidesHistory {
     private int givenRatings;
     private String rideStatus;
 
-    public RidesHistory() {
+    public RidesHistoryModel() {
     }
 
-    public RidesHistory(long id, long userId, long driverId, String date, String time, String startLocationName, String dropLocationName, int givenRatings, String rideStatus) {
+    public RidesHistoryModel(long id, long userId, long driverId, String date, String time, String startLocationName, String dropLocationName, int givenRatings, String rideStatus) {
         this.id = id;
         this.userId = userId;
         this.driverId = driverId;
@@ -40,7 +40,7 @@ public class RidesHistory {
         this.rideStatus = rideStatus;
     }
 
-    public RidesHistory(long userId, long driverId, String date, String time, String startLocationName, String dropLocationName, int givenRatings, String rideStatus) {
+    public RidesHistoryModel(long userId, long driverId, String date, String time, String startLocationName, String dropLocationName, int givenRatings, String rideStatus) {
         this.userId = userId;
         this.driverId = driverId;
         this.date = date;

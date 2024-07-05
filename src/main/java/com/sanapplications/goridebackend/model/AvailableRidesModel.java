@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "available_rides")
-public class AvailableRides {
+public class AvailableRidesModel {
     @Id
     @SequenceGenerator(
             name= "available_rides_sequence",
@@ -32,12 +32,12 @@ public class AvailableRides {
     private String ride;
     private String route;
 
-    public AvailableRides() {
+    public AvailableRidesModel() {
     }
 
-    public AvailableRides(long id, long userId, long driverId, String date, String time, String token, String otp, String driverStatus,
+    public AvailableRidesModel(long id, long userId, long driverId, String date, String time, String token, String otp, String driverStatus,
 //                          LocationModel startLocation, LocationModel dropLocation,
-                          int pkgUsed, String ride, String route) {
+                               int pkgUsed, String ride, String route) {
         this.id = id;
         this.userId = userId;
         this.driverId = driverId;
@@ -53,9 +53,9 @@ public class AvailableRides {
         this.route = route;
     }
 
-    public AvailableRides(long userId, long driverId, String date, String time, String token, String otp, String driverStatus,
+    public AvailableRidesModel(long userId, long driverId, String date, String time, String token, String otp, String driverStatus,
 //                          LocationModel startLocation, LocationModel dropLocation,
-                          int pkgUsed, String ride, String route) {
+                               int pkgUsed, String ride, String route) {
         this.userId = userId;
         this.driverId = driverId;
         this.date = date;
