@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.sanapplications.goridebackend.GoRideBackendApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.361 s -- in com.sanapplications.goridebackend.GoRideBackendApplicationTests
