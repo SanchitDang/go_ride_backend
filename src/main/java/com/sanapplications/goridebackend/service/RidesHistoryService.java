@@ -2,16 +2,15 @@ package com.sanapplications.goridebackend.service;
 
 import com.sanapplications.goridebackend.model.RidesHistoryModel;
 import com.sanapplications.goridebackend.repository.RidesHistoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class RidesHistoryService {
+    
     private final RidesHistoryRepository ridesHistoryRepository;
 
-    @Autowired
     public RidesHistoryService(RidesHistoryRepository ridesHistoryRepository) {
         this.ridesHistoryRepository = ridesHistoryRepository;
     }

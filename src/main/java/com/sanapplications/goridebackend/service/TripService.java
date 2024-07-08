@@ -4,7 +4,6 @@ import com.sanapplications.goridebackend.model.AvailableRidesModel;
 import com.sanapplications.goridebackend.model.RidesHistoryModel;
 import com.sanapplications.goridebackend.repository.AvailableRidesRepository;
 import com.sanapplications.goridebackend.repository.RidesHistoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,7 +20,6 @@ public class TripService {
     private final AvailableRidesRepository availableRidesRepository;
     private final RidesHistoryRepository ridesHistoryRepository;
 
-    @Autowired
     public TripService(AvailableRidesRepository availableRidesRepository, RidesHistoryRepository ridesHistoryRepository) {
         this.availableRidesRepository = availableRidesRepository;
         this.ridesHistoryRepository = ridesHistoryRepository;

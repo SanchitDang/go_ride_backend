@@ -11,7 +11,6 @@ import com.sanapplications.goridebackend.model.UserModel;
 public interface UserRepository extends JpaRepository<UserModel, Long> {
 
     Optional<UserModel> findUserByEmail(String email);
-
     Optional<UserModel> findUserByPhone(String phone);
 
 }

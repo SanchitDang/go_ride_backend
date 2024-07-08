@@ -2,7 +2,6 @@ package com.sanapplications.goridebackend.controller;
 
 import com.sanapplications.goridebackend.service.UserService;
 import com.sanapplications.goridebackend.model.UserModel;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +15,6 @@ public class UserController {
 
     private final UserService userService;
 
-    @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }

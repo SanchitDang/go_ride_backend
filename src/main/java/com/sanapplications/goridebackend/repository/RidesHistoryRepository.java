@@ -11,4 +11,5 @@ public interface RidesHistoryRepository extends JpaRepository<RidesHistoryModel,
 
     List<RidesHistoryModel> findByUserId(Long userId);
     List<RidesHistoryModel> findByDriverId(Long driverId);
+    
 }

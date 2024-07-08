@@ -11,15 +11,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import com.sanapplications.goridebackend.model.AdminModel;
+import com.sanapplications.goridebackend.repository.AdminRepository;
 import com.sanapplications.goridebackend.repository.RoutesRepository;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
 
-    @Autowired
-    private SettingsRepository settingsRepository;
-    private RoutesRepository routesRepository;
+    private final SettingsRepository settingsRepository;
+    private final RoutesRepository routesRepository;
+    private final AdminRepository adminRepository;
 
+    public DataInitializer(SettingsRepository settingsRepository, RoutesRepository routesRepository, AdminRepository adminRepository) {
+        this.settingsRepository = settingsRepository;
+        this.routesRepository = routesRepository;
+        this.adminRepository = adminRepository;
+    }
+    
     @Override
     public void run(String... args) throws Exception {
         // Initialize settings if not present
@@ -42,6 +50,13 @@ public class DataInitializer implements CommandLineRunner {
                     new RoutesModel("Dwarka to Gurugram_DG1")
             );
             routesRepository.saveAll(routes);
+        }
+
+        // Initialize admins if not present
+        if (adminRepository.count() == 0) {
+            // username: admin@admin.com, password: 12345678
+            AdminModel admin = new AdminModel("admin@admin.com", "$2a$10$SFZZzjLVLr2xnNEr11b73uWUl7CyFoJPUIGj8c1L65TDMFHSw4eTS");
+            adminRepository.save(admin);
         }
     }
 }
