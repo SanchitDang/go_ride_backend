@@ -1,15 +1,17 @@
 package com.sanapplications.goridebackend.service;
 
-import com.sanapplications.goridebackend.model.UserModel;
-import com.sanapplications.goridebackend.repository.UserRepository;
-import jakarta.transaction.Transactional;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import com.sanapplications.goridebackend.model.UserModel;
+import com.sanapplications.goridebackend.repository.UserRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class UserService {
@@ -25,6 +27,18 @@ public class UserService {
 
     public List<UserModel> getUsers(){
         return userRepository.findAll();
+    }
+
+    public UserModel getUserById(Long userId){
+        return userRepository.findById(userId).orElseThrow(() -> new IllegalStateException(
+            "User with id " + userId + " does not exists."
+        ));
+    }
+
+    public UserModel getUserByPhone(String phone){
+        return userRepository.findUserByPhone(phone).orElseThrow(() -> new IllegalStateException(
+            "User with phone " + phone + " does not exists."
+        ));
     }
 
     public UserModel addUser(UserModel userModel) {
@@ -56,6 +70,36 @@ public class UserService {
         if(name != null && name.length() > 0 && !Objects.equals(user.getFirstName(), name)){
             user.setFirstName(name);
         }
+    }
+
+    public void updateUserEmail(Long userId, String email) {
+        UserModel user = userRepository.findById(userId).orElseThrow(()-> new IllegalStateException(
+                "User with id " + userId + " does not exists."
+        ));
+        if(userRepository.findUserByEmail(email).isPresent()){
+            throw new IllegalStateException("Email " + email + " is already taken.");
+        }else{
+            user.setEmail(email);
+        }
+    }
+
+    public void updateUserFirstName(Long userId, String firstName) {
+        UserModel user = userRepository.findById(userId).orElseThrow(()-> new IllegalStateException(
+                "User with id " + userId + " does not exists."
+        ));
+       user.setFirstName(firstName);
+    }
+
+    public void updateUserLastName(Long userId, String lastName) {
+        UserModel user = userRepository.findById(userId).orElseThrow(()-> new IllegalStateException(
+                "User with id " + userId + " does not exists."
+        ));
+       user.setLastName(lastName);
+    }
+
+    public boolean isUserExist(String phone){
+        Optional<UserModel> user = userRepository.findUserByPhone(phone);
+        return user.isPresent();
     }
 
     public boolean login(String email, String password) {

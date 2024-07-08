@@ -1,6 +1,11 @@
 package com.sanapplications.goridebackend.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 
 
 @Entity
@@ -24,10 +29,12 @@ public class AvailableRidesModel {
     private String token;
     private String otp;
     private String driverStatus;
-//    @Embedded
-//    private LocationModel startLocation;
-//    @Embedded
-//    private LocationModel dropLocation;
+    private String startLocation;
+    private double startLatitude;
+    private double startLongitude;
+    private String dropLocation;
+    private double dropLatitude;
+    private double dropLongitude;
     private int pkgUsed;
     private String ride;
     private String route;
@@ -35,40 +42,46 @@ public class AvailableRidesModel {
     public AvailableRidesModel() {
     }
 
-    public AvailableRidesModel(long id, long userId, long driverId, String date, String time, String token, String otp, String driverStatus,
-//                          LocationModel startLocation, LocationModel dropLocation,
-                               int pkgUsed, String ride, String route) {
-        this.id = id;
-        this.userId = userId;
-        this.driverId = driverId;
+    public AvailableRidesModel(String date, long driverId, String driverStatus, double dropLatitude, String dropLocation, double dropLongitude, String otp, int pkgUsed, String ride, String route, double startLatitude, String startLocation, double startLongitude, String time, String token, long userId) {
         this.date = date;
-        this.time = time;
-        this.token = token;
-        this.otp = otp;
+        this.driverId = driverId;
         this.driverStatus = driverStatus;
-//        this.startLocation = startLocation;
-//        this.dropLocation = dropLocation;
+        this.dropLatitude = dropLatitude;
+        this.dropLocation = dropLocation;
+        this.dropLongitude = dropLongitude;
+        this.otp = otp;
         this.pkgUsed = pkgUsed;
         this.ride = ride;
         this.route = route;
+        this.startLatitude = startLatitude;
+        this.startLocation = startLocation;
+        this.startLongitude = startLongitude;
+        this.time = time;
+        this.token = token;
+        this.userId = userId;
     }
 
-    public AvailableRidesModel(long userId, long driverId, String date, String time, String token, String otp, String driverStatus,
-//                          LocationModel startLocation, LocationModel dropLocation,
-                               int pkgUsed, String ride, String route) {
-        this.userId = userId;
-        this.driverId = driverId;
+    public AvailableRidesModel(String date, long driverId, String driverStatus, double dropLatitude, String dropLocation, double dropLongitude, long id, String otp, int pkgUsed, String ride, String route, double startLatitude, String startLocation, double startLongitude, String time, String token, long userId) {
         this.date = date;
-        this.time = time;
-        this.token = token;
-        this.otp = otp;
+        this.driverId = driverId;
         this.driverStatus = driverStatus;
-//        this.startLocation = startLocation;
-//        this.dropLocation = dropLocation;
+        this.dropLatitude = dropLatitude;
+        this.dropLocation = dropLocation;
+        this.dropLongitude = dropLongitude;
+        this.id = id;
+        this.otp = otp;
         this.pkgUsed = pkgUsed;
         this.ride = ride;
         this.route = route;
+        this.startLatitude = startLatitude;
+        this.startLocation = startLocation;
+        this.startLongitude = startLongitude;
+        this.time = time;
+        this.token = token;
+        this.userId = userId;
     }
+
+    
 
     public long getId() {
         return id;
@@ -134,21 +147,53 @@ public class AvailableRidesModel {
         this.driverStatus = driverStatus;
     }
 
-//    public LocationModel getStartLocation() {
-//        return startLocation;
-//    }
-//
-//    public void setStartLocation(LocationModel startLocation) {
-//        this.startLocation = startLocation;
-//    }
-//
-//    public LocationModel getDropLocation() {
-//        return dropLocation;
-//    }
-//
-//    public void setDropLocation(LocationModel dropLocation) {
-//        this.dropLocation = dropLocation;
-//    }
+    public String getStartLocation() {
+        return startLocation;
+    }
+
+    public void setStartLocation(String startLocation) {
+        this.startLocation = startLocation;
+    }
+
+    public double getStartLatitude() {
+        return startLatitude;
+    }
+
+    public void setStartLatitude(double startLatitude) {
+        this.startLatitude = startLatitude;
+    }
+
+    public double getStartLongitude() {
+        return startLongitude;
+    }
+
+    public void setStartLongitude(double startLongitude) {
+        this.startLongitude = startLongitude;
+    }
+
+    public String getDropLocation() {
+        return dropLocation;
+    }
+
+    public void setDropLocation(String dropLocation) {
+        this.dropLocation = dropLocation;
+    }
+
+    public double getDropLatitude() {
+        return dropLatitude;
+    }
+
+    public void setDropLatitude(double dropLatitude) {
+        this.dropLatitude = dropLatitude;
+    }
+
+    public double getDropLongitude() {
+        return dropLongitude;
+    }
+
+    public void setDropLongitude(double dropLongitude) {
+        this.dropLongitude = dropLongitude;
+    }
 
     public int getPkgUsed() {
         return pkgUsed;
@@ -173,23 +218,29 @@ public class AvailableRidesModel {
     public void setRoute(String route) {
         this.route = route;
     }
-
     @Override
     public String toString() {
-        return "AvailableRides{" +
-                "id=" + id +
-                ", userId=" + userId +
-                ", driverId=" + driverId +
-                ", date='" + date + '\'' +
-                ", time='" + time + '\'' +
-                ", token='" + token + '\'' +
-                ", otp='" + otp + '\'' +
-                ", driverStatus='" + driverStatus + '\'' +
-//                ", startLocation=" + startLocation +
-//                ", dropLocation=" + dropLocation +
-                ", pkgUsed=" + pkgUsed +
-                ", ride='" + ride + '\'' +
-                ", route='" + route + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("AvailableRidesModel{");
+        sb.append("id=").append(id);
+        sb.append(", userId=").append(userId);
+        sb.append(", driverId=").append(driverId);
+        sb.append(", date=").append(date);
+        sb.append(", time=").append(time);
+        sb.append(", token=").append(token);
+        sb.append(", otp=").append(otp);
+        sb.append(", driverStatus=").append(driverStatus);
+        sb.append(", startLocation=").append(startLocation);
+        sb.append(", startLatitude=").append(startLatitude);
+        sb.append(", startLongitude=").append(startLongitude);
+        sb.append(", dropLocation=").append(dropLocation);
+        sb.append(", dropLatitude=").append(dropLatitude);
+        sb.append(", dropLongitude=").append(dropLongitude);
+        sb.append(", pkgUsed=").append(pkgUsed);
+        sb.append(", ride=").append(ride);
+        sb.append(", route=").append(route);
+        sb.append('}');
+        return sb.toString();
     }
+
 }
