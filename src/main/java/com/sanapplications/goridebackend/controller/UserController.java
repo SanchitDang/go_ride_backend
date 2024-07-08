@@ -75,6 +75,13 @@ public class UserController {
         userService.updateUserLastName(userId, firstName);
     }
 
+    @PutMapping("updateUserRoute/{userId}")
+    public void updateUserRoute(
+            @PathVariable("userId") Long userId,
+            @RequestParam String Route){
+        userService.updateUserRoute(userId, Route);
+    }
+
     @PostMapping("isUserExist")
     public boolean isUserExist(@RequestParam String userPhone) {
        return userService.isUserExist(userPhone);

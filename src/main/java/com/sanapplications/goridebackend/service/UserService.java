@@ -62,7 +62,6 @@ public class UserService {
             userRepository.deleteById(userId);
     }
 
-    @Transactional
     public void updateUser(Long userId, String name, String email) {
         UserModel user = userRepository.findById(userId).orElseThrow(()-> new IllegalStateException(
                 "User with id " + userId + " does not exists."
@@ -95,6 +94,13 @@ public class UserService {
                 "User with id " + userId + " does not exists."
         ));
        user.setLastName(lastName);
+    }
+
+    public void updateUserRoute(Long userId, String route) {
+        UserModel user = userRepository.findById(userId).orElseThrow(()-> new IllegalStateException(
+                "User with id " + userId + " does not exists."
+        ));
+       user.setRoute(route);
     }
 
     public boolean isUserExist(String phone){
