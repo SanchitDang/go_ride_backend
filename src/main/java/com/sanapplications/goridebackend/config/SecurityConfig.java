@@ -1,4 +1,4 @@
-package com.sanapplications.goridebackend.security;
+package com.sanapplications.goridebackend.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
